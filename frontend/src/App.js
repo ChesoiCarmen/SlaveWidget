@@ -43,7 +43,7 @@ class Calculator extends React.Component {
 
         <div>
           <label>Operation:</label>
-
+          {/* include MASTER component here */}
         </div>
 
         <div>
