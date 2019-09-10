@@ -3,10 +3,10 @@ import './App.css';
 
 class Calculator extends React.Component {
   state = {
-    operand1: Number,
-    operand2: Number,
-    result: Number
-  }
+    operand1: 0,
+    operand2: 0,
+    result: 0
+  };
 
   componentDidMount() {
     this.setState({ operand1: 0 });
@@ -30,7 +30,7 @@ class Calculator extends React.Component {
           <input type="text"
                  pattern="[0-9]*"
                  onInput={this.handleChange1.bind(this)}
-                 value={this.state.operand1}/>
+                 defaultValue={this.state.operand1}/>
         </div>
 
         <div>
@@ -38,12 +38,12 @@ class Calculator extends React.Component {
           <input type="text"
                  pattern="[0-9]*"
                  onInput={this.handleChange2.bind(this)}
-                 value={this.state.operand2}/>
+                 defaultValue={this.state.operand2}/>
         </div>
 
         <div>
           <label>Operation:</label>
-          {/* include MASTER component here */}
+          <man-operators></man-operators>
         </div>
 
         <div>
