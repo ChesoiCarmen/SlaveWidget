@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
 
+const Operators = React.lazy(() => import(/* webpackIgnore: true  */ 'http://localhost:3000/index.js').then(
+  ({ default: factory }) => ({ default: factory(React) })
+));
+
 class Calculator extends React.Component {
   state = {
     operand1: 0,
@@ -15,11 +19,12 @@ class Calculator extends React.Component {
 
   handleChange1(event) {
     const value = event.target.value;
-    this.setState({operand1: value});
+    this.setState({ operand1: value });
   }
+
   handleChange2(event) {
     const value = event.target.value;
-    this.setState({operand2: value});
+    this.setState({ operand2: value });
   }
 
   render() {
@@ -43,7 +48,10 @@ class Calculator extends React.Component {
 
         <div>
           <label>Operation:</label>
-          <man-operators></man-operators>
+          <React.Suspense fallback={<div style={{height: '72px'}}/>}>
+            <Operators></Operators>
+          </React.Suspense>
+
         </div>
 
         <div>
